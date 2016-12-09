@@ -6,5 +6,5 @@ Vivien: I added a very fancy text editor called ckeditor which has replaced our 
 	
 	The webpage looks lke this right now: https://postimg.org/image/6pvw14sef/
 
-I still want to add some sort of process tracker, I'll look into it this weekend
+I still want to add some sort of visual process tracker, I'll try to look into it this weekend!
 
