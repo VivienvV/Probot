@@ -9,6 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 		CKEDITOR.config.height = '450px';
 		CKEDITOR.config.width = '1000px';
+		config.extraPlugins = 'wordcount,notification'; 
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
