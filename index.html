@@ -1,132 +1,12 @@
+<!DOCTYPE html>
 <html>
-	<head>	
-		<title>Probot: Your personal tool against procrastination</title>	
+<head>
+    <title>Probot: your tool against procrastination</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/style.css">
 
-		<style type="text/css"> /* CSS Styling */ 
-		 @font-face { font-family: Montserrat; src: url('/Montserrat-Regular.ttf'); }
-		 @font-face { font-family: Hind; src: url('/Hind-Medium.ttf'); }
-		body {
-			min-width: 630px;        
-		}
-		#container {
-			padding-left: 200px;      
-			padding-right: 200px;     
-		}
-
-		#container .column {
-			position: relative;
-			float: left;
-		}
-		
-		#center {
-			padding: 10px 0px;       
-			width: 100%;
-			height: 550px;
-			
-		}
-			#ckcontainer {
-			    margin-right: auto;
-			    margin-left: auto ;
-			    width: 1000px;
-			    vertical-align:middle;
-			}
-		
-		#left {
-			width: 180px;             
-			padding: 0 10px;          
-			right: 200px;             
-			margin-left: -100%;
-		}
-		
-		#right {
-			width: 180px;            
-			padding: 0 10px; 
-			right: 0px;         
-			margin-right: -100%;
-		}
-		
-		#footer {
-			clear: both;
-		}
-		
-		/*** IE Fix ***/
-		* html #left {
-			left: 150px;              
-		}
-		/*** Equal-height Columns ***/
-		#container {
-			overflow: hidden;
-		}
-		#container .column {
-			padding-bottom: 1001em;    
-			margin-bottom: -1000em;     
-		}
-		/*** Footer Fix ***/
-		* html body {
-			overflow: hidden;
-		}
-		
-		* html #footer-wrapper {
-			float: left;
-			position: relative;
-			width: 100%;
-			padding-bottom: 10010px;
-			margin-bottom: -10000px;
-			background: #FFF;         
-		}
-		/*** Layout ***/
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url(/bg5.jpeg);
-		}
-		#header{
-			font-size: large;
-			text-align: center;
-			padding: 0.3em 0;
-			height: 60px;
-			background: transparent;
-			
-		}
-			#titletext {
-				text-align: left;
-				width: 500px;
-				border-bottom: solid white 2px;
-				padding-top: 22px;
-			    padding-right: 30px;
-			    padding-bottom: 13px;
-			    padding-left: 30px;
-			    font-family: "Montserrat", Times, serif;
-			    font-size: x-large;
-			    color: #333333;
-		}
-		#footer {
-			text-align: right;
-			padding-right: 10px;
-			padding-top: 35px;
-			height: 20px;
-			font-family: "Hind", Times, serif;
-			font-size: medium;
-			color: black;
-		}
-		#left {
-			background: transparent;
-		}
-		#center {
-			background: transparent;
-		}
-		#right {
-			background: transparent;
-		}
-		#container .column {
-			padding-top: 1em;
-			text-align: justify;
-		}
-									
-		</style>
-
-		<!--Word Counter -->
-    <SCRIPT LANGUAGE="JavaScript">
+       <!--Word Counter -->
+    <script>
         function CountWords(this_field) {
             var fullStr = this_field.childNodes[1].childNodes[1].childNodes[1].contentWindow.document.body.innerText + " ";
             var initial_whitespace_rExp = /^[^A-Za-z0-9]+/gi;
@@ -153,80 +33,40 @@
             oFCKeditor1.ReplaceTextarea();
         }
     </script>
+    
     <script>
-    
-        var chance = require('chance').Chance();
-    
-        const have = ['should', 'are supposed to', 'must', 'have to'];
-        const start = ['be busy', 'start', 'go back to', 'resume'];
-        const verb = ['working', 'typing', 'writing'];
-        const adjectives = ['energetically', 'eager', 'enthusiastic'];
-        const time = ['right now', 'instantly', 'right away', 'at once', 'straightaway'];
-        function choice(array) {
-            var index = chance.natural({
-                'min': 0,
-                'max': array.length - 1
-            });
-            return array[index];
-        }
-        function maybe(array) {
-            if (chance.bool()) {
-                return choice(array);
-            } else {
-                return '';
-            }
-        }
-        function procrast() {
-        
-        
-            window.alert(choice(have));
-            var message = 'Hi! You ' + choice(have) + ' ' + choice(start) + ' ' + choice(verb) + ' ' + maybe(adjectives) + ' ' + choice(time) + '. ';
-            return message;
-        }
         var old_wc = 0;
         var old_per = 0;
         var t = 0;
+        var width = 0;
+        var w=0;
         var timer = setInterval(function() {
             checkProgress();
-        }, 500);
-        function alert1() {
-            return "you havent written in 5 seconds";
-        }
-        function alert2() {
-            return "you havent wirtten in 10 seconds";
-        }
+        }, 1000);
         function checkProgress() {
             var editor = document.querySelector('[lang="en"]');
             var wc = CountWords(editor);
+            var audio1 = new Audio('tick.mp3');
             var per = (wc / w) * 100;
-            //window.alert(per);
+            
             if (wc != old_wc) {
+                audio1.pause(); // a little slow but ok 
                 var diff = per - old_per;
                 old_wc = wc;
                 old_per = per;
                 t = 0;
                 move(diff);
-            } else {
+            } 
+            else {
                 t++;
-                var audio = new Audio('tick.ogg');
-                audio.play();
-                var audio2 = new Audio('tick.mp3');
-                audio2.play();
-                var sound = document.getElementById("check");
-                sound.play();
-                var msg = '';
-                if (t == 10) {
-                    msg = procrast();
-                    //else if(t>10)
-                    //   msg=alert2();
-                    window.alert(msg);
+                if (t == 20) {
+                    audio1.play();
+                    socket.emit('procrast');
                 }
             }
         }
-        var width = 0;
         function move(percentage) {
             var elem = document.getElementById("myBar");
-            //var id = setInterval(frame, 10);
             frame(percentage);
             function frame(percentage) {
                 if (width >= 100) {
@@ -234,13 +74,13 @@
                 } else {
                     width = width + percentage;
                     elem.style.width = Math.round(width) + '%';
-                    document.getElementById("label").innerHTML = width + '%';
+                    document.getElementById("label").innerHTML = Math.round(width) + '%';
                 }
             }
         }
     </script>
-    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 </head>
+
 
 <body>
 
@@ -248,8 +88,8 @@
         <div id="titletext">PROBOT.</div>
     </div>
 
-    <div id="container">
-
+    
+     <div id="container">
         <div id="center" class="column">
             <div id="ckcontainer">
                 <form>
@@ -259,40 +99,21 @@
                     </script>
                 </form>
             </div>
-
         </div>
-
-        <div id="left" class="column">
-            <h2></h2>
-
-
-            <audio id="check" preload="auto">
-                <source src="tick.ogg">
-            </audio>
-
-
-        </div>
-
-        <div id="right" class="column">
-            <h2></h2>
-        </div>
-
     </div>
+    
+    
     <div id="myProgress">
         <div id="myBar">
             <div id="label">0%</div>
         </div>
     </div>
+    
+    
     <div id="footer-wrapper">
-
         <div id="footer">CTH 2016</div>
-    </div>
-    <script>
-        //var w = prompt("How many words do you need to write?");
-        // var d = prompt("When is it due?");
-        //document.getElementById("wc").innerHTML = w;
-    </script>
-
+</div>
+    
     <!-- import socket.io -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -301,10 +122,13 @@
         // when connecting 
         socket.on('connect', function(data) {
             console.log('user has connected to server');
+            w = prompt("Hi there, how many words do you need to write?");
+        });
+        socket.on('message', function(msg) {
+            window.alert(msg);
         });
     </script>
 
 </body>
 
 </html>
-
