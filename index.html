@@ -5,7 +5,10 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/style.css">
 
-       <!--Word Counter -->
+      
+    <!--Word Counter -->
+
+
     <script>
         function CountWords(this_field) {
             var fullStr = this_field.childNodes[1].childNodes[1].childNodes[1].contentWindow.document.body.innerText + " ";
@@ -21,6 +24,9 @@
             return word_count;
         }
     </script>
+
+    
+
 
 
     <!--Ckeditor -->
@@ -39,7 +45,7 @@
         var old_per = 0;
         var t = 0;
         var width = 0;
-        var w=0;
+        var w = prompt("Hi there, how many words do you need to write?");;
         var timer = setInterval(function() {
             checkProgress();
         }, 1000);
@@ -81,15 +87,14 @@
     </script>
 </head>
 
-
 <body>
 
-    <div id="header">
+<div id="header">
         <div id="titletext">PROBOT.</div>
     </div>
 
     
-     <div id="container">
+         <div id="container">
         <div id="center" class="column">
             <div id="ckcontainer">
                 <form>
@@ -112,7 +117,7 @@
     
     <div id="footer-wrapper">
         <div id="footer">CTH 2016</div>
-</div>
+    </div>
     
     <!-- import socket.io -->
     <script src="/socket.io/socket.io.js"></script>
@@ -122,7 +127,6 @@
         // when connecting 
         socket.on('connect', function(data) {
             console.log('user has connected to server');
-            w = prompt("Hi there, how many words do you need to write?");
         });
         socket.on('message', function(msg) {
             window.alert(msg);
