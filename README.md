@@ -1,8 +1,27 @@
-# final_assignment
+# Probot
 Final Assignment for CTH 2016
 
-Vivien: I added a very fancy text editor called ckeditor which has replaced our old boring textbox. From now on, it isn't just any text editor, it's een ADVANCED text editor.
-	In the process of installing it however, I seem to have broken the word count button (sorry). I haven't been able to get it to work again, but I'll keep trying.
-	I still want to add some sort of visual process tracker as well, I'll try to look into it this weekend!
+Every student knows the problem: you have an essay due, but you just can’t bring yourself to start working. As the due date approaches, you stare at the blank screen and revaluate your life choices Just how did it come to this?
+But no more,
+Because for all you procrastinators out there, there is a solution: probot.
+Probot is your personal assistant in essay writing. He tells you how much progress you are making in your writing and sends you friendly reminders to start working should you stay idle for too long.
 
-edit: I added a word counter to the ckeditor, which displays live how many words you've written so far. It's still not ideal, but it's better than the broken button from before.
+How to install
+---------------
+Clone everything from the Probot github to your local machine and open the folder in your terminal.
+Install the required modules; socket, server, chance and express by entering the following commands:
+
+	$ npm install --save socket.io
+	$ npm install --save http
+	$ npm install --save chance
+	$ npm install --save express
+
+Once the required modules have been installed, run server.js by entering the following:
+
+	$ node server.js
+
+Probot will now be available on your localhost:8088. Open your prefered web browser and navigate to your localhost:8088.
+You can now start working on your essay!
+
+How it works
+-------------
