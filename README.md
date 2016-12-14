@@ -30,7 +30,7 @@ If your word count doesn't increase within a certain amount of time, you will ge
 Features
 ----------
 - randomized pop-up messages
-- randomized essay stimulating alarms
+- essay stimulating sound alarms
 - progress bar showing you exactly how much you've progressed
 - fully customizable text, including font, text colour and general layout
 - rewarding system that really helps you stop procrastinating
