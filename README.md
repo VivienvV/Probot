@@ -1,7 +1,7 @@
 # Probot
 Final Assignment for CTH 2016
 
-Every student knows the problem: you have an essay due, but you just can’t bring yourself to start working. As the due date approaches, you stare at the blank screen and revaluate your life choices. "Just how did it come to this?"
+Every student knows the problem: you have an essay due, but you just can’t bring yourself to start working. As the due date approaches, you stare at the blank screen and revaluate your life choices. Just how did it come to this?
 But no more, because for all you procrastinators out there, there is a solution: Probot.
 Probot is your personal assistant in essay writing. It tells you how much progress you are making in your writing and sends you friendly reminders to start working should you stay idle for too long. With Probot by your side, missed deadlines are a thing of the past!
 
