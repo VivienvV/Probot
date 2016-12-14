@@ -73,7 +73,7 @@ authors: Lenka, Laura and Vivien
             checkProgress();
         }, 1000);
         function checkProgress() {
-            var editor = document.querySelector('[lang="en"]'); //trick we used to get to the editor field, since it doesn't have an ID
+            var editor = document.querySelector('[lang="en"]'); //trick we used to get to the editor field, since it doesn't have an ID. It is very important that you set the lang to the language of your own machine, en for english, nl for dutch
             var wc = CountWords(editor);
             var per = (wc / w) * 100;
             
