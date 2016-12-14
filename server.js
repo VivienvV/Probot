@@ -1,21 +1,44 @@
+/*Probot
+Your tool against procrastination.
+Final Assignment for CTH 2016
+authors: Lenka, Laura and Vivien
+14-12-2016*/
 
+
+//-------------------//
+// REQUIRED MODULES//
+//------------------//
+
+// import express
 var express = require('express');
-var chance = require('chance').Chance();
 var app = express();
+// import chance
+var chance = require('chance').Chance();
+// import node.js http
+var server = require('http').Server(app);
+// import socket.io
+var io = require('socket.io')(server);  
+// import chance
+var chance = require('chance').Chance();
+
+
+//setting middleware
+app.use(express.static(__dirname + "/public")); //Serves resources from public folder
 
 
 
-
-
-        var chance = require('chance').Chance();
-    
+//------------------//
+// POP UP MESSAGES//
+//------------------//
+        
+        //database for storing the things to be randomized
         const have = ['should', 'are supposed to', 'must', 'have to'];
         const start = ['be busy', 'start', 'go back to', 'resume'];
         const verb = ['working', 'typing', 'writing'];
-        const adjectives = ['energetically', 'eager', 'enthusiastic'];
-        const time = ['right now', 'instantly', 'right away', 'at once', 'straightaway'];
+        const adjectives = ['energetically', 'eagerly', 'enthusiasticly'];
+        const time = ['right now', 'instantly', 'right away', 'at once', 'straight away'];
 
-        function choice(array) {
+        function choice(array) {            //choice function, which randomizes things
             var index = chance.natural({
                 'min': 0,
                 'max': array.length - 1
@@ -24,7 +47,7 @@ var app = express();
 
         }
 
-        function maybe(array) {
+        function maybe(array) {      //function for maybe, which may or may not activate
             if (chance.bool()) {
                 return choice(array);
             } else {
@@ -32,30 +55,11 @@ var app = express();
             }
         }
 
-        function procrast() {
+        function procrast() {       //generates a randomized message when your procrastinate
             var message = 'Hi! You ' + choice(have) + ' ' + choice(start) + ' ' + choice(verb) + ' ' + maybe(adjectives) + ' ' + choice(time) + '. ';
             return message;
 
         }
-
-
-
-
-
-
-
-
-//setting middleware
-app.use(express.static(__dirname + "/public")); //Serves resources from public folder
-
-
- // import node.js http
-    var server = require('http').Server(app);
-
-    
-    // import socket.io
-    var io = require('socket.io')(server);  // npm install --save socket.io
-
 
 
 /* ----------------------------------
@@ -87,5 +91,4 @@ console.log('got a connection');
         msg = procrast();
   	io.emit('message', msg);
 
-  });});
-
+});});

@@ -1,17 +1,26 @@
-<!DOCTYPE html>
+<!-- 
+Probot
+Your tool against procrastination.
+Final Assignment for CTH 2016
+authors: Lenka, Laura and Vivien
+14-12-2016 
+-->
+
+
+<!DOCTYPE <html>
 <html>
-<head>
-    <title>Probot: your tool against procrastination</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/style.css">
+    <head>
+        <title>Probot: your personal tool against procrastination</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css">
 
-      
     <!--Word Counter -->
-
-
+    <!-- This script adds a word counter which--> 
     <script>
         function CountWords(this_field) {
+
             var fullStr = this_field.childNodes[1].childNodes[1].childNodes[1].contentWindow.document.body.innerText + " ";
+            
             var initial_whitespace_rExp = /^[^A-Za-z0-9]+/gi;
             var left_trimmedStr = fullStr.replace(initial_whitespace_rExp, "");
             var non_alphanumerics_rExp = rExp = /[^A-Za-z0-9]+/gi;
@@ -24,9 +33,6 @@
             return word_count;
         }
     </script>
-
-    
-
 
 
     <!--Ckeditor -->
@@ -48,9 +54,11 @@
         var w = prompt("Hi there, how many words do you need to write?");;
         var timer = setInterval(function() {
             checkProgress();
+
         }, 1000);
+
         function checkProgress() {
-            var editor = document.querySelector('[lang="en"]');
+            var editor = document.querySelector('[lang="nl"]');
             var wc = CountWords(editor);
             var audio1 = new Audio('tick.mp3');
             var per = (wc / w) * 100;
@@ -71,9 +79,11 @@
                 }
             }
         }
+
         function move(percentage) {
             var elem = document.getElementById("myBar");
             frame(percentage);
+
             function frame(percentage) {
                 if (width >= 100) {
                     window.alert("congratulations!");
@@ -89,12 +99,12 @@
 
 <body>
 
-<div id="header">
+    <div id="header">
         <div id="titletext">PROBOT.</div>
     </div>
 
     
-         <div id="container">
+    <div id="container">
         <div id="center" class="column">
             <div id="ckcontainer">
                 <form>
@@ -124,10 +134,12 @@
     <script>
         // connect to localhost on its port (see server.js -- 8088)
         var socket = io().connect('http://localhost:8088');
+
         // when connecting 
         socket.on('connect', function(data) {
             console.log('user has connected to server');
         });
+
         socket.on('message', function(msg) {
             window.alert(msg);
         });
