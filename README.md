@@ -25,7 +25,7 @@ You can now start working on your essay!
 How it works
 -------------
 On opening the Probot webpage, you will be asked how many words you need to write. You can then start working on your essay in the built in text editor. The progress bar will show you how far you are in your word count.
-If your word count doesn't increase within a certain amount of time, you will get a pop-up message with sound effect reminding you you have to start working again.
+If your word count doesn't increase within a certain amount of time, you will get a pop-up message with sound effect reminding you to start working again.
 
 Features
 ----------
